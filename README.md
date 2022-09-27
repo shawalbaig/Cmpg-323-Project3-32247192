@@ -4,7 +4,10 @@ Cmpg 323 project 3 is based on an existing ASP.NET Core MVC Web Application that
 ## Repository Pattern 
 <br />The goal of the repository  is to establish an abstraction layer between an application's business logic layer and data access layer.
 By putting these patterns into practice, you can protect your application against changes in the data store and make test-driven development or automated unit testing easier.
-<br />For this Web Application Tier 2 is implimented. 
+<br />
+<br />
+<br />For this Web Application Tier 2 is implimented.
+<br />
 <br />The diagram below shows how tier 2 repository pattern looks like:
 
 
