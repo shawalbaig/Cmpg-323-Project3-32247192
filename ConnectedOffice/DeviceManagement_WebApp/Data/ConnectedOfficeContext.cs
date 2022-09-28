@@ -19,6 +19,10 @@ namespace DeviceManagement_WebApp.Data
             : base(options)
         {
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Password=s3cur3p@ssw0rd;Persist Security Info=True;User ID=cmpg323_sa;Initial Catalog=ConnectedOffice;Data Source=zaazrcmpg323sqlserver.database.windows.net");
+        }
 
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Device> Device { get; set; }

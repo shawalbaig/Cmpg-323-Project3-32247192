@@ -193,6 +193,7 @@ namespace DeviceManagement_WebApp.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
         }
 
+
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
