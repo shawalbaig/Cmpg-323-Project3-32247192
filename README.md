@@ -11,7 +11,8 @@ By putting these patterns into practice, you can protect your application agains
 <br />The diagram below shows how tier 2 repository pattern looks like:
 
 
-![image](https://user-images.githubusercontent.com/88322853/192627664-007faaeb-719d-4ae4-9e25-1e0a6f61e3ae.png)
+![image](https://user-images.githubusercontent.com/88322853/192659008-20d1231c-1e7a-4158-a108-dcd64321cb9d.png)
+
 
 Link to the page : https://tedu.com.vn/lap-trinh-aspnet/tim-hieu-ve-repository-pattern-va-generic-repository-pattern-36.html\
 
