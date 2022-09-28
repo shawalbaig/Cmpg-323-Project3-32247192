@@ -14,7 +14,8 @@ By putting these patterns into practice, you can protect your application agains
 ![image](https://user-images.githubusercontent.com/88322853/192659008-20d1231c-1e7a-4158-a108-dcd64321cb9d.png)
 
 
-Link to the page : https://tedu.com.vn/lap-trinh-aspnet/tim-hieu-ve-repository-pattern-va-generic-repository-pattern-36.html\
+Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+
 
 
 
