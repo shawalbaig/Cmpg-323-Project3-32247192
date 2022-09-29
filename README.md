@@ -23,12 +23,15 @@ Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-v
 <br /> all the methods are called from the interface class instead of the controller class therefore implimenting polymorphism 
 
 ## Project 3 API description 
-<br />    //GET: /Categories
-<br />    // GET: /Categories/Details/5 
-<br /> // POST: Categories/Create 
-<br /> // GET: Categories/Edit/5 
-<br /> // POST: Categories/Edit/5
-<br /> //GET: Categories/Delete/5
+<br />    GET: /Categories : The data is returned if the given GUID has read access to it. 
+<br />    GET: /Categories/Details/5 : The details is returned if the given GUID has read access to it.
+<br />    POST: Categories/Create: A GUID that can be used to read, edit, delete, or provide access to the data is returned by the API when the data store receives the request body. 
+<br />    GET: Categories/Edit/5 : if the given GUID has edit access to any data , that information is returned and displayed and then updated to serve as the request's bosy.
+<br />    POST: Categories/Edit/5 : If the given GUID has update access to any data, that information is updated to serve as the request's body.
+<br />    GET: Categories/Delete/5: Access needs to be a string that includes the letters r (read), u (update), and d. (delete).
+A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
+## Building 
+
 
 
 
