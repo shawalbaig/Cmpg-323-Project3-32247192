@@ -1,6 +1,6 @@
 # Cmpg-323-Project3-32247192
 Cmpg 323 project 3 is based on an existing ASP.NET Core MVC Web Application that is hosted on azure.
-The Web api application allows the user to manipulate all the data present in the Zones, categories and devices tables in the database.
+<br />The Web api application allows the user to manipulate all the data present in the Zones, categories and devices tables in the database.
 A user can Create, Remove, Update, Edit and Delete the data that is present database.
 ## Repository Pattern 
 <br />The goal of the repository  is to establish an abstraction layer between an application's business logic layer and data access layer.
