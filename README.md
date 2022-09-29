@@ -34,7 +34,9 @@ Link to the page : [https://dotnettutorials.net/lesson/repository-design-pattern
 <br />    POST: Categories/Edit/5 : If the given GUID has update access to any data, that information is updated to serve as the request's body.
 <br />    GET: Categories/Delete/5: Access needs to be a string that includes the letters r (read), u (update), and d. (delete).
 A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
-## 
+## Reference list:
+<br /> All the sites used for assistance in this project are listen in the Reference list file 
+
 
 
 
