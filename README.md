@@ -6,7 +6,7 @@ Cmpg 323 project 3 is based on an existing ASP.NET Core MVC Web Application that
 By putting these patterns into practice, you can protect your application against changes in the data store and make test-driven development or automated unit testing easier.
 <br />
 <br />
-<br />For this Web Application Tier 2 is implimented.
+<br />For this Web Application Tier 2 repository pattern is implimented.
 <br />
 <br />The diagram below shows how tier 2 repository pattern looks like:
 
@@ -15,6 +15,13 @@ By putting these patterns into practice, you can protect your application agains
 
 
 Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+<br />
+<br />
+<br /> ### Implimentation of Tier 2 Repository pattern
+<br /> A new repository class and an interface class is created for each of the controllers
+<br /> All the code from the controllers is transfered to the repository class
+<br /> all the methods are called from the interface class instead of the controller class therefore implimenting polymorphism 
+
 
 
 
