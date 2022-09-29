@@ -76,7 +76,11 @@ A new GUID is provided that has the required access rights on the specified GUID
 <br /> 
 <br />
 ![image](https://user-images.githubusercontent.com/88322853/193022799-4cf78251-cdf5-486c-80ee-57aa15e47516.png)
-
+## Technologies used :
+<br /> 1. Visual Studio.
+<br /> 2. Azure (For hosting the database )
+<br /> 3. Git (To push all the work in visual studio onto github).
+<br /> 4. Github.
 ## Reference list:
 <br /> All the sites used for assistance in this project are listen in the Reference list file 
 
