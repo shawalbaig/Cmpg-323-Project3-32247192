@@ -37,7 +37,7 @@ Link to the page : [https://dotnettutorials.net/lesson/repository-design-pattern
 <br /> 
 A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
 ### The GUI of the Web API Application can be seen below :
-#### 1. A User can log in or create an account and sign up on the web api application 
+####1. A User can log in or create an account and sign up on the web api application 
 <br /> 
 <br /> 
 <br />
