@@ -42,7 +42,7 @@ A new GUID is provided that has the required access rights on the specified GUID
 <br /> 
 <br />
 <br />
-![image](https://user-images.githubusercontent.com/88322853/193021549-5b572692-0614-468f-9afd-8c905bcf698f.png)
+![image](https://user-images.githubusercontent.com/88322853/193026083-94254ef4-ec1e-46a2-a738-7f0cbd3b5450.png)
 <br /> 
  2. By providing a valid email address and password the user can create an account.
 <br /> 
