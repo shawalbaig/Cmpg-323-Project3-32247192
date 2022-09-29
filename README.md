@@ -33,8 +33,10 @@ Link to the page : [https://dotnettutorials.net/lesson/repository-design-pattern
 <br />    GET: Categories/Edit/5 : if the given GUID has edit access to any data , that information is returned and displayed and then updated to serve as the request's bosy.
 <br />    POST: Categories/Edit/5 : If the given GUID has update access to any data, that information is updated to serve as the request's body.
 <br />    GET: Categories/Delete/5: Access needs to be a string that includes the letters r (read), u (update), and d. (delete).
+<br /> 
+<br /> 
 A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
-<br /> The GUI of the Web API Application can be seen below :
+### The GUI of the Web API Application can be seen below :
 <br /> A User can log in or create an account and sign up on the web api application 
 ![image](https://user-images.githubusercontent.com/88322853/193021549-5b572692-0614-468f-9afd-8c905bcf698f.png)
 <br /> By providing a valid email address and password the user can create an account.
