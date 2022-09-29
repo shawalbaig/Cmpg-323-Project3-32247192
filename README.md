@@ -34,6 +34,20 @@ Link to the page : [https://dotnettutorials.net/lesson/repository-design-pattern
 <br />    POST: Categories/Edit/5 : If the given GUID has update access to any data, that information is updated to serve as the request's body.
 <br />    GET: Categories/Delete/5: Access needs to be a string that includes the letters r (read), u (update), and d. (delete).
 A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
+<br /> The GUI of the Web API Application can be seen below :
+<br /> A User can log in or create an account and sign up on the web api application 
+![image](https://user-images.githubusercontent.com/88322853/193021549-5b572692-0614-468f-9afd-8c905bcf698f.png)
+<br /> By providing a valid email address and password the user can create an account.
+![image](https://user-images.githubusercontent.com/88322853/193021640-4866db9b-2d88-4c38-a8ce-a19abdc42c7a.png)
+<br /> This is the Home page gui where the user can navigate to different tabs.
+![image](https://user-images.githubusercontent.com/88322853/193021712-11bbbdcf-d635-4268-ab1d-57d58e2e795f.png)
+<br /> After clicking on the tabs all the information related to the tab is displayed 
+![image](https://user-images.githubusercontent.com/88322853/193021857-6d41805b-ffec-44ef-a854-b99a692a6d27.png)
+<br /> A user can use the buttons indicated by the arrows to edit delete or view a certain category in the database.
+![image](https://user-images.githubusercontent.com/88322853/193022633-e574c106-7e85-4608-b6bc-a67cff712895.png)
+<br /> The + icon indicated by the arrow can be used to add a new category to the database.
+![image](https://user-images.githubusercontent.com/88322853/193022799-4cf78251-cdf5-486c-80ee-57aa15e47516.png)
+
 ## Reference list:
 <br /> All the sites used for assistance in this project are listen in the Reference list file 
 
