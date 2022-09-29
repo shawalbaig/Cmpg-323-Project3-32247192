@@ -1,5 +1,5 @@
 # Cmpg-323-Project3-32247192
-Cmpg 323 project 3 is based on an existing ASP.NET Core MVC Web Application that requires some modification.
+Cmpg 323 project 3 is based on an existing ASP.NET Core MVC Web Application that is hosted on azure.
 
 ## Repository Pattern 
 <br />The goal of the repository  is to establish an abstraction layer between an application's business logic layer and data access layer.
@@ -30,7 +30,7 @@ Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-v
 <br />    POST: Categories/Edit/5 : If the given GUID has update access to any data, that information is updated to serve as the request's body.
 <br />    GET: Categories/Delete/5: Access needs to be a string that includes the letters r (read), u (update), and d. (delete).
 A new GUID is provided that has the required access rights on the specified GUID if the access requested is the same as or a subset of the access on the supplied GUID. 
-## Building 
+## 
 
 
 
