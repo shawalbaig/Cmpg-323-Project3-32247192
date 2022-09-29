@@ -22,7 +22,13 @@ Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-v
 <br /> All the code from the controllers is transfered to the repository class
 <br /> all the methods are called from the interface class instead of the controller class therefore implimenting polymorphism 
 
-
+## Project 3 API description 
+<br /> //GET: /Categories
+<br /> // GET: /Categories/Details/5 
+<br /> // POST: Categories/Create 
+<br /> // GET: Categories/Edit/5 
+<br /> // POST: Categories/Edit/5
+<br /> //GET: Categories/Delete/5
 
 
 
