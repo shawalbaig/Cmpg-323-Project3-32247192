@@ -13,149 +13,270 @@ using DeviceManagement_WebApp.Interface;
 
 
 
-
-
-    public class CategoriesController : Controller
+namespace DeviceManagement_WebApp.Repositories
+{
+    public class CategoriesRepository : ICategoryRepository
     {
-
-        private readonly ConnectedOfficeContext _context;
-
+        private readonly ConnectedOfficeContext _context = new ConnectedOfficeContext();
 
 
-        public CategoriesController(ConnectedOfficeContext context)
+        public void Add(Category entity)
         {
-            _context = context;
+            _context.Set<Category>().Add(entity);
         }
 
-        public async Task<IActionResult> Index()
+        public void AddRange(IEnumerable<Category> entities)
         {
-            return View(_context.Category.ToList());
-
+            _context.Set<Category>().AddRange(entities);
         }
 
-
-
-        // GET: Categories/Details/5 
-        [HttpGet]
-        public async Task<IActionResult> Details(Guid? id)
+        public IEnumerable<Category> Find(Expression<Func<Category, bool>> expression)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            return _context.Set<Category>().Where(expression);
+        }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
+        public IEnumerable<Category> GetAll()
+        {
+            //return _context.Set<T>().ToList();  
+            return _context.Category.ToList();
         }
 
 
-        // GET: Categories/Create 
-        public IActionResult Create()
+
+        public Category GetById(Guid? id)
         {
-            return View();
+            //return _context.Set<T>().Find(id); 
+            return _context.Category.Find(id);
         }
 
-        // POST: Categories/Create 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for  
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598. 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
+
+        public void Remove(Category entity)
         {
-            category.CategoryId = Guid.NewGuid();
-            _context.Add(category);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _context.Set<Category>().Remove(entity);
         }
 
-        // GET: Categories/Edit/5 
-        public async Task<IActionResult> Edit(Guid? id)
+        public void RemoveRange(IEnumerable<Category> entities)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Category.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", category.CategoryId);
-             
-            return View(category);
+            _context.Set<Category>().RemoveRange(entities);
         }
 
-        // POST: Categories/Edit/5 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for  
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598. 
-        //[HttpPost] 
-        //[ValidateAntiForgeryToken] 
-        public async Task<IActionResult> Edit1(Guid id, [Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
+        public void Save()
         {
-            if (id != category.CategoryId)
-            {
-                return NotFound();
-            }
-            try
-            {
-                _context.Update(category);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(category.CategoryId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
+            _context.SaveChanges();
         }
 
-        // GET: Categories/Delete/5 
-        public async Task<IActionResult> Delete(Guid? id)
+        public void Update(Category entity)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
-        // POST: Categories/Delete/5 
-        //    [HttpPost, ActionName("Delete")] 
-        //    [ValidateAntiForgeryToken] 
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+
+
+        private bool Exists(Guid id)
         {
-            var category = await _context.Category.FindAsync(id);
-            _context.Category.Remove(category);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //return _categoryRepository.Find(id); 
+            return _context.Category.Any(e => e.CategoryId == id);
         }
 
-        private bool CategoryExists(Guid id)
-        {
-            return _context.Category.Any(e => e.CategoryId == id);  
-        }
+
     }
+
+    //public class CategoriesRepository : ICategoriesRepository
+    //{
+
+    //    private readonly ConnectedOfficeContext _context = new ConnectedOfficeContext();
+
+
+
+    //    //public CategoriesRepository(ConnectedOfficeContext context)
+    //    //{
+    //    //    _context = context;
+    //    //}
+
+    //    //public async Task<IActionResult> Index()
+    //    //{
+    //    //    return View(_context.Category.ToList());
+
+    //    //}
+    //    public void Add(Category entity)
+    //    {
+    //        _context.Set<Category>().Add(entity);
+    //    }
+
+    //    public void AddRange(IEnumerable<Category> entities)
+    //    {
+    //        _context.Set<Category>().AddRange(entities);
+    //    }
+    //    public IEnumerable<Category> Find(Expression<Func<Category, bool>> expression)
+    //    {
+    //        return _context.Set<Category>().Where(expression);
+
+
+    //    }
+    //    public IEnumerable<Category> GetAll()
+    //    {
+    //        //return _context.Set<T>().ToList();  
+    //        return _context.Category.ToList();
+    //    }
+    //    public Category GetById(Guid? id)
+    //    {
+    //        //return _context.Set<T>().Find(id); 
+    //        return _context.Category.Find(id);
+    //    }
+    //    public void Remove(Category entity)
+    //    {
+    //        _context.Set<Category>().Remove(entity);
+    //    }
+
+    //    public void RemoveRange(IEnumerable<Category> entities)
+    //    {
+    //        _context.Set<Category>().RemoveRange(entities);
+    //    }
+
+    //    public void Save()
+    //    {
+    //        _context.SaveChanges();
+    //    }
+
+    //    public void Update(Category entity)
+    //    {
+    //        _context.Entry(entity).State = EntityState.Modified;
+    //    }
+
+
+
+    //    private bool Exists(Guid id)
+    //    {
+    //        //return _categoryRepository.Find(id); 
+    //        return _context.Category.Any(e => e.CategoryId == id);
+    //    }
+
+}
+
+
+
+    //    // GET: Categories/Details/5 
+    //    [HttpGet]
+    //    public async Task<IActionResult> Details(Guid? id)
+    //    {
+    //        if (id == null)
+    //        {
+    //            return NotFound();
+    //        }
+
+    //        var category = await _context.Category
+    //            .FirstOrDefaultAsync(m => m.CategoryId == id);
+    //        if (category == null)
+    //        {
+    //            return NotFound();
+    //        }
+
+    //        return View(category);
+    //    }
+
+
+    //    // GET: Categories/Create 
+    //    public IActionResult Create()
+    //    {
+    //        return View();
+    //    }
+
+    //    // POST: Categories/Create 
+    //    // To protect from overposting attacks, enable the specific properties you want to bind to, for  
+    //    // more details, see http://go.microsoft.com/fwlink/?LinkId=317598. 
+    //    [HttpPost]
+    //    [ValidateAntiForgeryToken]
+    //    public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
+    //    {
+    //        category.CategoryId = Guid.NewGuid();
+    //        _context.Add(category);
+    //        await _context.SaveChangesAsync();
+    //        return RedirectToAction(nameof(Index));
+    //    }
+
+    //    // GET: Categories/Edit/5 
+    //    public async Task<IActionResult> Edit(Guid? id)
+    //    {
+    //        if (id == null)
+    //        {
+    //            return NotFound();
+    //        }
+
+    //        var category = await _context.Category.FindAsync(id);
+    //        if (category == null)
+    //        {
+    //            return NotFound();
+    //        }
+    //        ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", category.CategoryId);
+
+    //        return View(category); 
+    //    }
+
+    //    // POST: Categories/Edit/5 
+    //    // To protect from overposting attacks, enable the specific properties you want to bind to, for  
+    //    // more details, see http://go.microsoft.com/fwlink/?LinkId=317598. 
+    //    //[HttpPost] 
+    //    //[ValidateAntiForgeryToken] 
+    //    public async Task<IActionResult> Edit1(Guid id, [Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
+    //    {
+    //        if (id != category.CategoryId)
+    //        {
+    //            return NotFound();
+    //        }
+    //        try
+    //        {
+    //            _context.Update(category);
+    //            await _context.SaveChangesAsync();
+    //        }
+    //        catch (DbUpdateConcurrencyException)
+    //        {
+    //            if (!CategoryExists(category.CategoryId))
+    //            {
+    //                return NotFound();
+    //            }
+    //            else
+    //            {
+    //                throw;
+    //            }
+    //        }
+    //        return RedirectToAction(nameof(Index));
+    //    }
+
+    //    // GET: Categories/Delete/5 
+    //    public async Task<IActionResult> Delete(Guid? id)
+    //    {
+    //        if (id == null)
+    //        {
+    //            return NotFound();
+    //        }
+
+    //        var category = await _context.Category
+    //            .FirstOrDefaultAsync(m => m.CategoryId == id);
+    //        if (category == null)
+    //        {
+    //            return NotFound();
+    //        }
+
+    //        return View(category);
+    //    }
+
+    //    // POST: Categories/Delete/5 
+    //    //    [HttpPost, ActionName("Delete")] 
+    //    //    [ValidateAntiForgeryToken] 
+    //    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    //    {
+    //        var category = await _context.Category.FindAsync(id);
+    //        _context.Category.Remove(category);
+    //        await _context.SaveChangesAsync();
+    //        return RedirectToAction(nameof(Index));
+    //    }
+
+    //    private bool CategoryExists(Guid id)
+    //    {
+    //        return _context.Category.Any(e => e.CategoryId == id);
+    //    }
+    //}
+
         //    public class Categorieontroller : Controller
         //    {
         //        private readonly ConnectedOfficeContext _context;

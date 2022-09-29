@@ -10,193 +10,98 @@ using DeviceManagement_WebApp.Models;
 using System.Linq.Expressions;
 using DeviceManagement_WebApp.Interface;
 using DeviceManagement_WebApp.Generic;
+using DeviceManagement_WebApp.Repositories;
 
 
 
-    public class ZonesController : Controller
+public class ZoneRepository : IZoneRepository
+{
+
+    private readonly ConnectedOfficeContext _context = new ConnectedOfficeContext();
+
+    public void Add(Zone entity)
     {
-        private readonly ConnectedOfficeContext _context;
-        //private readonly IZonesRepository<Zone> zonesRepository;
-
-        public ZonesController(ConnectedOfficeContext context)
-        {
-            _context = context;
-        }
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(zonesRepository.GetAll());
-        //}
-
-
-
-
-
-        //public ZonesController(ConnectedOfficeContext context)
-        //{
-        //    _context = context;
-        //}
-
-        // GET: Zones
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Zone.ToListAsync());
-        }
-
-        // GET: Zones/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var zone = await _context.Zone
-                .FirstOrDefaultAsync(m => m.ZoneId == id);
-            if (zone == null)
-            {
-                return NotFound();
-            }
-
-            return View(zone);
-        }
-
-        // GET: Zones/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Zones/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ZoneId,ZoneName,ZoneDescription,DateCreated")] Zone zone)
-        {
-            zone.ZoneId = Guid.NewGuid();
-            _context.Add(zone);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Zones/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var zone = await _context.Zone.FindAsync(id);
-            if (zone == null)
-            {
-                return NotFound();
-            }
-            return View(zone);
-        }
-
-        // POST: Zones/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ZoneId,ZoneName,ZoneDescription,DateCreated")] Zone zone)
-        {
-            if (id != zone.ZoneId)
-            {
-                return NotFound();
-            }
-
-            try
-            {
-                _context.Update(zone);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ZoneExists(zone.ZoneId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
-
-        }
-
-        // GET: Zones/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var zone = await _context.Zone
-                .FirstOrDefaultAsync(m => m.ZoneId == id);
-            if (zone == null)
-            {
-                return NotFound();
-            }
-
-            return View(zone);
-        }
-
-        // POST: Zones/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var zone = await _context.Zone.FindAsync(id);
-            _context.Zone.Remove(zone);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ZoneExists(Guid id)
-        {
-            return _context.Zone.Any(e => e.ZoneId == id);
-        }
+        _context.Set<Zone>().Add(entity);
     }
-    //private readonly ConnectedOfficeContext _context = new ConnectedOfficeContext();
-    //public ZonnesRepository(ConnectedOfficeContext context) : base(context)
-    //{
 
-    //}
-    //ALL THE METHODS
-    //public Zone GetMostrecentCategory()
-    //{
-    //    return _context.Category.OrderByDescending(Category => Category.DateCreated).FirstOrDefault();
-    //}
+    public void AddRange(IEnumerable<Zone> entities)
+    {
+        _context.Set<Zone>().AddRange(entities);
+    }
 
-    // get all method 
-    //public List<Zone> Getall()
-    //{
-    //    return _context.Zone.ToList();
-    //}
-    //public async Task<IActionResult> Details(Guid? id)
-    //{
-    //    if (id == null)
-    //    {
-    //        return NotFound();
-    //    }
+    public IEnumerable<Zone> Find(Expression<Func<Zone, bool>> expression)
+    {
+        return _context.Set<Zone>().Where(expression);
+    }
 
-    //    var zone = await _context.Zone
-    //        .FirstOrDefaultAsync(m => m.ZoneId == id);
-    //    if (zone == null)
-    //    {
-    //        return NotFound();
-    //    }
+    public IEnumerable<Zone> GetAll()
+    {
+        //return _context.Set<T>().ToList();  
+        return _context.Zone.ToList();
+    }
 
-    //    return (IActionResult)zone.ZoneName.ToList();
+    public Zone GetById(Guid? id)
+    {
+        //return _context.Set<T>().Find(id); 
+        return _context.Zone.Find(id);
+    }
 
-    //}
 
-    //private IActionResult NotFound()
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public void Remove(Zone entity)
+    {
+        _context.Set<Zone>().Remove(entity);
+    }
+
+    public void RemoveRange(IEnumerable<Zone> entities)
+    {
+        _context.Set<Zone>().RemoveRange(entities);
+    }
+
+    public void Save()
+    {
+        _context.SaveChanges();
+    }
+
+    public void Update(Zone entity)
+    {
+        _context.Entry(entity).State = EntityState.Modified;
+    }
+}
+//private readonly ConnectedOfficeContext _context = new ConnectedOfficeContext();
+//public ZonnesRepository(ConnectedOfficeContext context) : base(context)
+//{
+
+//}
+//ALL THE METHODS
+//public Zone GetMostrecentCategory()
+//{
+//    return _context.Category.OrderByDescending(Category => Category.DateCreated).FirstOrDefault();
+//}
+
+// get all method 
+//public List<Zone> Getall()
+//{
+//    return _context.Zone.ToList();
+//}
+//public async Task<IActionResult> Details(Guid? id)
+//{
+//    if (id == null)
+//    {
+//        return NotFound();
+//    }
+
+//    var zone = await _context.Zone
+//        .FirstOrDefaultAsync(m => m.ZoneId == id);
+//    if (zone == null)
+//    {
+//        return NotFound();
+//    }
+
+//    return (IActionResult)zone.ZoneName.ToList();
+
+//}
+
+//private IActionResult NotFound()
+//{
+//    throw new NotImplementedException();
+//}

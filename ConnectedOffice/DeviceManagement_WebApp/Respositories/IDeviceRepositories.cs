@@ -11,14 +11,21 @@ using System.Linq.Expressions;
 
 namespace DeviceManagement_WebApp.Interface
 {
-    public interface IDeviceRepository<T> where T : class
+    public interface IDeviceRepository
     {
-        T GetById(int id);
-        IEnumerable<T> GetAll();
-        IEnumerable<T> Find(Expression<Func<T, bool>> exspression);
-        void Add(T entity);
-        void AddRange(IEnumerable<T> entities);
-        void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entities);
+
+        Device GetById(Guid? id);
+
+        IEnumerable<Device> GetAll();
+
+        IEnumerable<Device> Find(Expression<Func<Device, bool>> expression);
+
+        void Add(Device entity);
+
+        void AddRange(IEnumerable<Device> entities);
+
+        void Remove(Device entity);
+
+        void RemoveRange(IEnumerable<Device> entites);
     }
 }

@@ -14,14 +14,27 @@ using DeviceManagement_WebApp.Generic;
 
 namespace DeviceManagement_WebApp.Interface
 {
-    public interface ICategoriesRepository<T> where T : class
+    public interface ICategoryRepository /*: IDisposable*/
     {
-        T GetById(int id);
-        IEnumerable<T> GetAll();
-        IEnumerable<T> Find(Expression<Func<T, bool>> exspression);
-        void Add(T entity);
-        void AddRange(IEnumerable<T> entities);
-        void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entities);
+
+
+        //T GetById(int id); 
+        Category GetById(Guid? id);
+
+        //IEnumerable<T> GetAll(); 
+        IEnumerable<Category> GetAll();
+
+        IEnumerable<Category> Find(Expression<Func<Category, bool>> expression);
+
+        void Add(Category entity);
+
+        void AddRange(IEnumerable<Category> entities);
+
+        void Remove(Category entity);
+
+        void RemoveRange(IEnumerable<Category> entites);
+
+        void Save();
+        void Update(Category entity);
     }
 }
