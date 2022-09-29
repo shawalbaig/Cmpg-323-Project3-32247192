@@ -17,7 +17,7 @@ By putting these patterns into practice, you can protect your application agains
 Link to the page : https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 <br />
 <br />
-<br /> ### Implimentation of Tier 2 Repository pattern
+### Implimentation of Tier 2 Repository pattern
 <br /> A new repository class and an interface class is created for each of the controllers
 <br /> All the code from the controllers is transfered to the repository class
 <br /> all the methods are called from the interface class instead of the controller class therefore implimenting polymorphism 
