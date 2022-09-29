@@ -77,7 +77,7 @@ A new GUID is provided that has the required access rights on the specified GUID
 <br />
 ![image](https://user-images.githubusercontent.com/88322853/193022799-4cf78251-cdf5-486c-80ee-57aa15e47516.png)
 <br /> 
- 7. The user can create a new category by providing the required information for category 
+ 7. The user can create a new category by providing the required information for category and then clicking on the Create button. 
 <br /> 
 <br /> 
 <br /> 
